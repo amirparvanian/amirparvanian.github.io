@@ -724,8 +724,9 @@ button { font-family: inherit; }
   .doc-grid { grid-template-columns: 1fr; }
   .where-row { grid-template-columns: 1fr; gap: 6px; }
   .facts { grid-template-columns: 1fr; }
-  .xfade-item .pair { grid-template-columns: 1fr; }
-  .xfade-item .pair .half img { min-height: 26vh; }
+  .xfade-item .pair { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .xfade-item .pair .half { min-height: 0; }
+  .xfade-item .pair .half img { min-height: 0; }
 }
 @media (max-width: 720px) {
   .nav-links {
