@@ -200,6 +200,17 @@ button { font-family: inherit; }
 }
 .strip-track a:hover img { filter: saturate(1) brightness(1.05); transform: translateY(-4px); }
 @keyframes strip-slide { to { transform: translateX(calc(-50% - 5px)); } }
+/* touch devices: the strip becomes a swipeable rail instead of an auto-marquee */
+@media (pointer: coarse), (max-width: 760px) {
+  .hero-strip {
+    overflow-x: auto; overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .hero-strip::-webkit-scrollbar { display: none; }
+  .strip-track { animation: none; padding-bottom: 14px; }
+  .strip-track a { flex: 0 0 auto; }
+}
 
 .reveal-load { opacity: 0; transform: translateY(26px); animation: rise .9s var(--ease) forwards; }
 .d1 { animation-delay: .12s; } .d2 { animation-delay: .24s; }
@@ -597,7 +608,7 @@ button { font-family: inherit; }
   border-radius: var(--radius); overflow: hidden;
 }
 .xfade-item .pair .half { position: relative; display: flex; flex-direction: column; margin: 0; }
-.xfade-item .pair .half img { flex: 1; min-height: 0; object-fit: cover; border-radius: 0; }
+.xfade-item .pair .half img { flex: 1; min-height: 0; object-fit: contain; background: #0f1114; border-radius: 0; }
 .pair-tag {
   display: flex; align-items: center; gap: 8px;
   font-family: var(--font-mono); font-size: 10.5px; font-weight: 500;
@@ -714,7 +725,7 @@ button { font-family: inherit; }
   .where-row { grid-template-columns: 1fr; gap: 6px; }
   .facts { grid-template-columns: 1fr; }
   .xfade-item .pair { grid-template-columns: 1fr; }
-  .xfade-item .pair .half img { min-height: 34vh; }
+  .xfade-item .pair .half img { min-height: 26vh; }
 }
 @media (max-width: 720px) {
   .nav-links {
